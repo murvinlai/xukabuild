@@ -16,7 +16,6 @@ global.argv = require('optimist')
 // modules. 
 var express = require('express'),
 	qs = require('querystring');
-	//cluster = require('cluster'),
 var helmet = require('helmet');
 
 // server create
@@ -124,7 +123,8 @@ server.use(express.vhost(build_config.build_app_domain, buildApp));
 
 server.get('/health', function(req, res) {
 	//webApp.testRest();
-	res.send('<div>health is good</div>');
+	var ts = Date.now();
+	res.send('<div>health is good.  TS: '+ts+ '</div>');
 });
 
 /* Start Server */
