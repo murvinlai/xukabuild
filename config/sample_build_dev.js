@@ -6,5 +6,8 @@ module.exports.config = {
 	build_admin: {
 		username:"xxx",
 		password:"xxx"
-	}
+	},
+	session_secret: "xxxx",
+	log_file_root_path : "/var/log/",
+	log_file_name_prefix: "xukalog_"
 }

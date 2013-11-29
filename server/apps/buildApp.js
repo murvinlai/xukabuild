@@ -6,7 +6,6 @@ var express = require('express'),
 	ejsEngine = require('ejs-locals'),
 	qs = require("querystring"),
 	parse = require('url').parse,
-	cfg = require('../lib/config'),
 	Seq = require('seq'),
 	adminSecurity = require('../lib/adminSecurity'),
 	app = express();
@@ -30,5 +29,39 @@ app.get('/test', function(req, res){
 	res.send('<div>Output '+temp+'</div>');	
 });
 
+app.get('/login', function(req, res){
+	if (req.session.adminUser) {
+		// already login
+		res.redirect('/home');
+	} else {
+		res.render('login', {layout:false, error:'', csrftoken:res.locals.csrftoken});
+	}
+});
 
+app.post('/login', adminSecurity.login);
+
+app.get('/logout', adminSecurity.logout);
+
+app.get('/', adminSecurity.restrict, function (req, res) {
+	res.redirect('/home');
+});
+
+// standard output
+var output = function(req, res, data) {
+	
+	if (req.query.callback) {
+		req.query.format = 'jsonp';
+		req.body.format = 'jsonp';
+	}
+	
+	if (req.query.format == 'json' || req.body.format == 'json') {
+		res.json(data);
+	} else if (req.query.format == 'jsonp' || req.body.format == 'jsonp') {
+		res.jsonp(data);
+	} else if (req.query.format == 'text' || req.body.format == 'text') {
+		res.send(data);
+	} else {
+		res.send('<div>'+data+'</div>');
+	}
+}
 

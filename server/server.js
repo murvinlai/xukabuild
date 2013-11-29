@@ -46,7 +46,7 @@ global.cfg = require('./lib/config');
 var	systemInit = require('./lib/systemInit'),
 	buildApp = require('./apps/buildApp').app
 	;
-systemInit.init();	// run system admin to read config file and put that into build_config 
+systemInit.init();	// run system admin to read config file and put that into build_config  or cfg
 			
 /* handle uncaught exception */
 process.on('uncaughtException', function (ex) {
@@ -58,7 +58,7 @@ process.on('uncaughtException', function (ex) {
 
 
 
-global.port = build_config.build_app_port;
+global.port = cfg.build_app_port;
 
 /* get parameters */
 if (argv.port !== false) {
@@ -85,7 +85,7 @@ server.use(helmet.contentTypeOptions());
 server.use(helmet.cacheControl());
 server.use(express.session({
 	secret: cfg.session_secret,
-	cookie: { domain: build_config.build_app_domain, httpOnly: true },
+	cookie: { domain: cfg.build_app_domain, httpOnly: true },
     maxAge: new Date(Date.now() + 3600000)
 
 }));
@@ -117,7 +117,7 @@ server.on('request', function(req, res) {
 });
 
 
-server.use(express.vhost(build_config.build_app_domain, buildApp));
+server.use(express.vhost(cfg.build_app_domain, buildApp));
 
 
 

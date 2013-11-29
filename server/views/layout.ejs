@@ -1,0 +1,41 @@
+<html>
+
+<head>
+	<title>Xuka Build Web Tool</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="js/ext/jquery.cookie.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/build.css">
+	
+	<script type="text/javascript">
+		var _XUKA_ = {
+			url: {
+				build: '<%= url.build %>'	
+			},
+			csrftoken: "<%= csrftoken %>",
+			title: '<%= site.title %>'
+		};
+		
+	</script>
+	<script src="/js/build.js"></script>
+</head>
+
+<body>
+	<div id="main">
+		
+		<% include header %>
+		<div class="Clr"></div>
+		
+		<% include menu %>
+		<div class="Clr"></div>
+		
+		<%- body %>
+		<div class="Clr"></div>
+		
+		<% include footer %>
+	</div>
+</body>
+
+</html>
