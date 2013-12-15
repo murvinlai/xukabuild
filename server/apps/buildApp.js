@@ -6,7 +6,6 @@ var express = require('express'),
 	ejsEngine = require('ejs-locals'),
 	qs = require("querystring"),
 	parse = require('url').parse,
-	Seq = require('seq'),
 	adminSecurity = require('../lib/adminSecurity'),
 	app = express();
 	
