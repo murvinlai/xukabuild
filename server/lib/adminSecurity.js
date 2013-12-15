@@ -6,6 +6,7 @@ module.exports.restrict = function (req, res, next) {
 	if (req.session.adminUser) {
 		next();
 	} else {
+		console.log("Access Denied.  Require Login");
 		req.session.error = 'Access denied!';
 		res.redirect('/login');
 	}

@@ -2,7 +2,7 @@
 	
 	<body>
 		<h1>Xuka Build Web Tool Login</h1>
-		<div>For project: <%= site.title %></div>
+		<div>For project: <%= cfg.build_project_title %></div>
 		<div class="Red"><%= error %></div>
 		<form action="/login"  method="post" >
 			<input type="hidden" name="_csrf" value="<%= csrftoken %>" />

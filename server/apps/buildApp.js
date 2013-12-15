@@ -35,7 +35,9 @@ app.get('/login', function(req, res){
 		// already login
 		res.redirect('/home');
 	} else {
-		res.render('login', {layout:false, error:'', csrftoken:res.locals.csrftoken});
+		console.log("not login");
+		
+		res.render('login', {layout:false, error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
 	}
 });
 

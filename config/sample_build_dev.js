@@ -1,4 +1,5 @@
 module.exports.config = {
+	build_project_title : "Test Build",
 	build_app_domain	: "build.xukabuild.ca",
 	build_app_port		: 	3030,
 	build_file_root_path:	"/home/ubuntu/scripts/",
