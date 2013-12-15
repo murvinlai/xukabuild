@@ -118,6 +118,7 @@ server.on('request', function(req, res) {
 	console.log("OK.. data ");
 });
 
+console.log("Config: " + JSON.stringify(cfg));
 
 server.use(express.vhost(cfg.build_app_domain, buildApp));
 

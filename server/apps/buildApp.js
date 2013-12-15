@@ -66,3 +66,4 @@ var output = function(req, res, data) {
 	}
 }
 
+module.exports.app = app;
