@@ -80,7 +80,7 @@ server.use(express.methodOverride());
 server.use(express.cookieParser());
 server.use(express.json());
 server.use(express.urlencoded());
-//server.use(express.multipart());
+server.use(express.multipart());
 server.use(helmet.xframe());
 server.use(helmet.iexss());
 server.use(helmet.contentTypeOptions());
