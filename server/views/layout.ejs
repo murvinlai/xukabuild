@@ -12,10 +12,10 @@
 	<script type="text/javascript">
 		var _XUKA_ = {
 			url: {
-				build: '<%= url.build %>'	
+				build: '<%= cfg.build_app_domain_protocol + cfg.build_app_domain %>'	
 			},
 			csrftoken: "<%= csrftoken %>",
-			title: '<%= site.title %>'
+			title: '<%= cfg.build_project_title %>'
 		};
 		
 	</script>
