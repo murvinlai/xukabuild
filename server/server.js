@@ -78,9 +78,9 @@ var bodyDefault = function() {
 server.use(express.favicon());
 server.use(express.methodOverride());
 server.use(express.cookieParser());
-server.use(express.json());
+server.use(express.json());		
 server.use(express.urlencoded());
-server.use(express.multipart());
+server.use(express.multipart());	// require for crsf
 server.use(helmet.xframe());
 server.use(helmet.iexss());
 server.use(helmet.contentTypeOptions());
