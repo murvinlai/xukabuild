@@ -1,0 +1,22 @@
+
+body{
+	margin:0 auto;
+	font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+
+.height5 {	height: 5px; }
+.height10 {	height: 10px; }
+.height15 {	height: 15px; }
+.height20 {	height: 20px; }
+
+.left {float:left;}
+.right {float:right;}
+
+.clr, .clear, .Clr, .Clear {clear:both;}
+
+.red {color:red;}
+.blue {color:blue;}
+
+
+
