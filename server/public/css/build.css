@@ -14,13 +14,11 @@
 
 
 #buildTitle {
-	padding:2px;
+	padding:5px;
 	margin-left:20px;
-	margin-top:5px;
 	font-size:12px;
 	font-weight:bold;
 	color:white;
-	width:400px;
 	float:left;
 }
 #topMenu {
