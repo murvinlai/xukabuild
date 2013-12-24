@@ -8,6 +8,8 @@
 #footer {
 	height:30px;
 	position:absolute; bottom:0;
+	padding:2px;
+	margin-left:20px;
 }
 
 
