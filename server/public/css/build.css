@@ -1,7 +1,7 @@
 
 #header {
 	width:100%;
-	height:25px;
+	height:30px;
 	background:#8BC84B;
 }
 
@@ -10,10 +10,25 @@
 }
 
 
-.BuildTitle {
+#buildTitle {
 	padding:2px;
 	margin-left:20px;
+	margin-top:5px;
 	font-size:12px;
 	font-weight:bold;
 	color:white;
+	width:300px;
+	float:left;
+}
+#topMenu {
+	padding:2px;
+	margin-top:5px;
+	margin-right:10px;
+	font-weight:normal;
+	float:right;
+}
+
+.TopMenuItem {
+	min-width:100px;
+	float:left;
 }
