@@ -35,3 +35,8 @@
 	min-width:100px;
 	float:left;
 }
+
+#contentArea {
+	margin-top:10px;
+	margin-left:10px;
+}

@@ -15,6 +15,9 @@ body{
 .margin_left15 {margin-left:15px;}
 .margin_left20 {margin-left:20px;}
 
+.padding5 {padding:5px;}
+.padding10 {padding:10px;}
+
 .left {float:left;}
 .right {float:right;}
 
@@ -22,6 +25,7 @@ body{
 
 .red {color:red;}
 .blue {color:blue;}
+.white {color:white;}
 
 h1 { font-size:18px; font-weight:bold;}
 h2 { font-size:16px; font-weight:bold;}
