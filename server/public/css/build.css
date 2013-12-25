@@ -52,3 +52,19 @@
 	padding-left:10px;
 	border-left: #FEFEFE 1px solid;
 }
+
+#menu ul {
+	list-style-type:none;	
+}
+
+#menu li {
+	display: block;
+	height:25px;
+}
+
+#menu li a {
+	text-decoration:none;
+}
+
+
+
