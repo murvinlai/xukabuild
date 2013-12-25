@@ -49,6 +49,12 @@ app.get('/', adminSecurity.restrict, function (req, res) {
 	res.render('home', { error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
 });
 
+app.get('/*', adminSecurity.restrict, function (req, res) {
+	var reqUrl = (req.url.length >0)?req.url:'/home';
+	console.log("req url: " + reqUrl);
+	res.render(reqUrl, { error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
+});
+
 // standard output
 var output = function(req, res, data) {
 	
