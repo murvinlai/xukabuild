@@ -51,8 +51,10 @@ app.get('/', adminSecurity.restrict, function (req, res) {
 
 app.get('/*', adminSecurity.restrict, function (req, res) {
 	var reqUrl = (req.url.length >0)?req.url:'/home';
-	console.log("req url: " + reqUrl);
-	res.render(reqUrl, { error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
+	var urlObject = url.parse(reqUrl);
+	var page = urlObject.pathname.substring(1);
+	console.log("req url: " + reqUrl + " Page: "  + page);
+	res.render(page, { error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
 });
 
 // standard output
