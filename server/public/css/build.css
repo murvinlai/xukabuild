@@ -36,3 +36,19 @@
 	margin-top:10px;
 	margin-left:10px;
 }
+
+#leftArea {
+	width:200px;
+	float:left;
+}
+
+#rightArea {
+	float:left;
+}
+
+#menu {
+	font-size:11px;
+	padding-top:10px;
+	padding-left:10px;
+	border-left: #FEFEFE 1px solid;
+}

@@ -27,10 +27,13 @@
 		<% include header %>
 		<div class="Clr"></div>
 		
-		<% include menu %>
-		<div class="Clr"></div>
+		<div id="leftArea">
+			<% include menu %>
+		</div>
 		
-		<%- body %>
+		<div id="rightArea">
+			<%- body %>
+		</div>
 		<div class="Clr"></div>
 		
 		<% include footer %>
