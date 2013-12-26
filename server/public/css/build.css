@@ -68,3 +68,11 @@
 
 
 
+
+#logContentArea {
+	width:100%;
+	min-height:50px;
+	font-family:"Courier New", Courier, monospace;
+	font-size:11px;
+}
+
