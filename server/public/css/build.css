@@ -32,6 +32,18 @@
 	float:left;
 }
 
+.TopMenuItem a:link,
+.TopMenuItem a:visited,
+.TopMenuItem a:active {
+	color:white;
+	text-decoration:none;
+}
+
+.TopMenuItem a:hover {
+	color:#EEE;
+}
+
+
 #contentArea {
 	margin-top:10px;
 	margin-left:10px;
