@@ -4,7 +4,11 @@
 		<form action="build" method="post"enctype="application/x-www-form-urlencoded">
 			<div><span>Build and deploy from Dev to Prod</span></div>
 			<div class="height10"></div>
+			<div>Status: <%= process %></div>
+			<div class="height10"></div>
 			<div><input type="submit" value="Build now"></div>
+			
+			<input type="hidden" name="_csrf" value="<%= csrftoken %>" />
 			
 		</form>
 		

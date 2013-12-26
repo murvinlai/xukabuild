@@ -45,6 +45,15 @@ app.post('/login', adminSecurity.login);
 
 app.get('/logout', adminSecurity.logout);
 
+app.post('/logout', adminSecurity.logout);
+
+app.post('/build', adminSecurity.restrict, function (req, res) {
+	
+	var passback = { error:'', csrftoken:res.locals.csrftoken, cfg:cfg};
+	passback.process = "No process currently running";
+	res.render('build', passback);
+});
+
 app.get('/', adminSecurity.restrict, function (req, res) {
 	res.render('dashboard', { error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
 });
@@ -54,7 +63,14 @@ app.get('/*', adminSecurity.restrict, function (req, res) {
 	var urlObject = url.parse(reqUrl);
 	var page = urlObject.pathname.substring(1);
 	console.log("req url: " + reqUrl + " Page: "  + page);
-	res.render(page, { error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
+	
+	var passback = { error:'', csrftoken:res.locals.csrftoken, cfg:cfg};
+	
+	if (page == 'build') {
+		passback.process = "No process currently running";
+	}
+	
+	res.render(page, passback);
 });
 
 // standard output
