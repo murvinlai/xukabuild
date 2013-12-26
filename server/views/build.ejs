@@ -2,16 +2,14 @@
 <div id="build">
 	<div id="contentArea">
 		<div><h2>Build and deploy from Dev to Prod</h2></div>
-		<form action="build" method="post"enctype="application/x-www-form-urlencoded">
 			
-			<div class="height10"></div>
-			<div>Status: <%= build_process.message %></div>
-			<div class="height10"></div>
-			<div><input type="submit" value="Build now"></div>
-			
-			<input type="hidden" name="_csrf" value="<%= csrftoken %>" />
-			
-		</form>
+		<div class="height10"></div>
+		<div>Status: <%= build_process.message %></div>
+		<div class="height10"></div>
+		<div><input id="build_now" type="submit" value="Build now"></div>
 		
+		<input type="hidden" name="_csrf" value="<%= csrftoken %>" />
+		
+	
 	</div>
 </div>
