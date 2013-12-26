@@ -31,4 +31,6 @@ _XUKA_.input = {
 }
 
 
-_XUKA_.init();
+$(document).ready(function(){
+	_XUKA_.init();
+});
