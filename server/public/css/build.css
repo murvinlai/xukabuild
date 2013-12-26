@@ -76,3 +76,10 @@
 	font-size:11px;
 }
 
+.ConfigBox {
+	width: 500px;
+	min-height:50px;
+	border:#FEFEFE 1px solid;
+}
+
+
