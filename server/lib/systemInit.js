@@ -20,4 +20,15 @@ module.exports.init = function () {
 	cfg.session_secret = build_config.session_secret;
 }
 
+global.process_message {
+	/* 0 */ "No current process running",
+	/* 1 */ "Process is running",
+	/* 2 */ "Process is completed",
+	/* 3 */ "Error"
+}
+
+global.process = {
+	status: 0, 
+	message: process_message[0]
+}
 
