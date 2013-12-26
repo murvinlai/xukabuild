@@ -68,7 +68,7 @@ app.get('/*', adminSecurity.restrict, function (req, res) {
 	var passback = { error:'', csrftoken:res.locals.csrftoken, cfg:cfg, data:{} };
 	
 	if (page == 'build') {
-		passback.process = process;
+		passback.build_process = build_process;
 	}
 	
 	if (page == 'view_config') {
