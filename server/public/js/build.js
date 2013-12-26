@@ -10,7 +10,7 @@ _XUKA_.init = function () {
 	// bind inputs
 	for (key in _XUKA_.input) {
 		if (_XUKA_.input.hasOwnProperty(key)) {
-			$(key)[_XUKA_.input[key].action_type](_XUKA_.input[key].call);
+			$('#' + key)[_XUKA_.input[key].action_type](_XUKA_.input[key].call);
 		}
 	}
 }
