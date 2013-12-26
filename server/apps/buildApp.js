@@ -46,7 +46,7 @@ app.post('/login', adminSecurity.login);
 app.get('/logout', adminSecurity.logout);
 
 app.get('/', adminSecurity.restrict, function (req, res) {
-	res.render('home', { error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
+	res.render('dashboard', { error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
 });
 
 app.get('/*', adminSecurity.restrict, function (req, res) {
