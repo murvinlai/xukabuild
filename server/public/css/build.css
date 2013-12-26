@@ -77,7 +77,7 @@
 }
 
 .ConfigBox {
-	width: 500px;
+	min-width: 500px;
 	min-height:50px;
 	border:#EFEFEF 1px solid;
 }
