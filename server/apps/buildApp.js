@@ -2,6 +2,7 @@
 var express = require('express'),	
 	_ = require('underscore-x'),
 	url = require('url'),
+	fs = require('fs'),
 	//ejs =  require('ejs'),
 	ejsEngine = require('ejs-locals'),
 	qs = require("querystring"),
@@ -71,7 +72,7 @@ app.get('/*', adminSecurity.restrict, function (req, res) {
 	}
 	
 	if (page == 'view_config') {
-		passback.data.script_content = "read data \n data again. ";
+		passback.data.script_content = fs.readFileSync(cfg.build_file_root_path + cfg.build_file_name);
 	}
 	
 	res.render(page, passback);
