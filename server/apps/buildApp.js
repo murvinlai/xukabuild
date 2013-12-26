@@ -55,7 +55,7 @@ app.post('/build', adminSecurity.restrict, function (req, res) {
 });
 
 app.get('/', adminSecurity.restrict, function (req, res) {
-	res.render('dashboard', { error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
+	res.render('dashboard', { error:'', csrftoken:res.locals.csrftoken, cfg:cfg, data:{} });
 });
 
 app.get('/*', adminSecurity.restrict, function (req, res) {
@@ -64,10 +64,14 @@ app.get('/*', adminSecurity.restrict, function (req, res) {
 	var page = urlObject.pathname.substring(1);
 	console.log("req url: " + reqUrl + " Page: "  + page);
 	
-	var passback = { error:'', csrftoken:res.locals.csrftoken, cfg:cfg};
+	var passback = { error:'', csrftoken:res.locals.csrftoken, cfg:cfg, data:{} };
 	
 	if (page == 'build') {
 		passback.process = "No process currently running";
+	}
+	
+	if (page == 'view_config') {
+		passback.data.script_content = "read data \n data again. ";
 	}
 	
 	res.render(page, passback);

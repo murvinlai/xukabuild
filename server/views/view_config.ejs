@@ -6,11 +6,25 @@
 			<!-- content -->
 			<h3>Config Variables: </h3>
 			
-			<div class="ConfigBox"></div>
-			
+			<div class="ConfigBox">
+				<div class="ItemList">
+					<ul>
+						<li>Build Title: <%= cfg.build_project_title %></li>
+						<li>Build Path: <%= cfg.build_file_root_path %></li>
+						<li>Build Script Name: <%= cfg.build_file_name %></li>
+						<li>Build Log Path: <%= cfg.log_file_root_path %></li>
+						<li>Build Log File Prefix: <%= cfg.log_file_name_prefix %></li>
+					</ul>
+				</div>
+			</div>
 			<div class="height10"></div>
 			<h3>Shell Script: </h3>
-			<div class="ConfigBox"></div>
+			<div class="ConfigBox">
+				<div>
+					<%= data.script_content %>
+				</div>
+				
+			</div>
 		</div>
 	</div>
 </div>

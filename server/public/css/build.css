@@ -50,7 +50,7 @@
 	font-size:11px;
 	padding-top:10px;
 	padding-left:10px;
-	border-left: #FEFEFE 1px solid;
+	border-left: #EFEFEF 1px solid;
 }
 
 #menu ul {
@@ -79,7 +79,14 @@
 .ConfigBox {
 	width: 500px;
 	min-height:50px;
-	border:#FEFEFE 1px solid;
+	border:#EFEFEF 1px solid;
 }
 
+.ItemList ul{
+	list-style-type:none;	
+}
 
+.ItemList li {
+	display:block;
+	height:25px;
+}
