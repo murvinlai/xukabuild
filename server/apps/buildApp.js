@@ -1,14 +1,16 @@
 
 var express = require('express'),	
+	app = express(),
 	_ = require('underscore-x'),
 	url = require('url'),
 	fs = require('fs'),
 	//ejs =  require('ejs'),
 	ejsEngine = require('ejs-locals'),
 	qs = require("querystring"),
+	async = require('async'),
 	parse = require('url').parse,
 	adminSecurity = require('../lib/adminSecurity'),
-	app = express();
+	actionManager = require('../lib/actionManager');
 	
 app.engine('ejs', ejsEngine);	
 app.set('view engine', 'ejs');
@@ -49,10 +51,25 @@ app.get('/logout', adminSecurity.logout);
 app.post('/logout', adminSecurity.logout);
 
 app.post('/build', adminSecurity.restrict, function (req, res) {
-	
-	var passback = { error:'', csrftoken:res.locals.csrftoken, cfg:cfg};
-	passback.process = "No process currently running";
-	res.render('build', passback);
+	var passback = { status:false};
+	async.waterfall([
+		function(callback) {
+			updateBuildProcess[1];
+			actionManager.scriptExec(null, callback);
+		},
+		function(data, callback) {
+			updateBuildProcess[2];
+			passback.build_process = build_process;
+			passback.status = true;
+			res.json(passback);
+		}
+		
+	], function(err, result){
+		updateBuildProcess[4];
+		passback.build_process = build_process;
+		passback.err = err;
+		res.json(passback);
+	});
 });
 
 app.get('/', adminSecurity.restrict, function (req, res) {

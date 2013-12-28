@@ -32,3 +32,7 @@ global.build_process = {
 	message: build_process_message[0]
 }
 
+global.updateBuildProcess = function(status){
+	build_process.status = status;
+	build_process.message = build_process_message[status];
+}
