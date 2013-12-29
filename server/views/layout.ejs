@@ -11,7 +11,7 @@
 	<script type="text/javascript">
 		var _XUKA_ = {
 			url: {
-				build: '<%= cfg.build_app_domain_protocol + cfg.build_app_domain %>'	
+				build: '<%= cfg.build_app_domain_protocol + cfg.build_app_domain + ":" + cfg.build_app_port %>'	
 			},
 			csrftoken: "<%= csrftoken %>",
 			title: '<%= cfg.build_project_title %>'
