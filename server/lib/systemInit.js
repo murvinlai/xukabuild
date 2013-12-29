@@ -33,6 +33,8 @@ global.build_process = {
 }
 
 global.updateBuildProcess = function(status){
+	console.log("updateBuildProcess is called with status: " + status);
 	build_process.status = status;
 	build_process.message = build_process_message[status];
+	console.log("build process: " + JSON.stringify(build_process));
 }

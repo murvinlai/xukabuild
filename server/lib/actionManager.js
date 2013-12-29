@@ -13,9 +13,9 @@ module.exports.scriptExec = function(data, next) {
 
 	exec(script, function(err, stdout, stderr){
 		console.log("Script is executed");
-		console.log(stdout);
-        console.log(stderr);
-        console.log(err);
+		console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+        console.log('err: ' + err);
         var result = {
             stdout:stdout,
             stderr:stderr,
