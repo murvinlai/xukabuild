@@ -10,7 +10,9 @@ module.exports.scriptExec = function(data, next) {
 	
 	console.log("running script " + script);
 	
+
 	exec(script, function(err, stdout, stderr){
+		console.log("Script is executed");
 		console.log(stdout);
         console.log(stderr);
         console.log(err);
@@ -43,7 +45,7 @@ module.exports.publish = function (data, next) {
     var exec = require('child_process').exec
 
     exec(script, function(error, stdout, stderr){
-
+		
         console.log(stdout);
         console.log(stderr);
         console.log(error);

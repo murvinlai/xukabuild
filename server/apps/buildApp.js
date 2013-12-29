@@ -54,10 +54,12 @@ app.post('/build', adminSecurity.restrict, function (req, res) {
 	var passback = { status:false};
 	async.waterfall([
 		function(callback) {
+			console.log("STEP 1");
 			updateBuildProcess[1];
 			actionManager.scriptExec(null, callback);
 		},
 		function(data, callback) {
+			console.log("STEP 2 data: " + JSON.stringify(data));
 			updateBuildProcess[2];
 			passback.build_process = build_process;
 			passback.status = true;
@@ -65,6 +67,7 @@ app.post('/build', adminSecurity.restrict, function (req, res) {
 		}
 		
 	], function(err, result){
+		console.log("STEP ERROR");
 		updateBuildProcess[4];
 		passback.build_process = build_process;
 		passback.err = err;
