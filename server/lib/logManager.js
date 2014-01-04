@@ -1,7 +1,7 @@
 var fs = require('fs');
 var _ = require('underscore');
 
-if(_.isUndefined(buildNumber)){
+if(_.isUndefined(global.buildNumber)){
 	global.buildNumber = null;;
 }
 
