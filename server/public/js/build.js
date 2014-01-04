@@ -37,6 +37,9 @@ _XUKA_.input = {
 			console.log("Select Log now");
 			var selectedValue = $('#select_log option:selected').val();
 			console.log("Select Value: " + selectedValue);
+			if (selectedValue == "SELECT ONE" || selectedValue == "") {
+				return;
+			}
 			var log_id = 0;
 			$.ajax({
 				type: "POST", 

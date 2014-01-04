@@ -20,7 +20,7 @@ var zeroPad = function(num, numZeros) {
 }
 
 var getBuildNumber = function() {
-	console.log("getBuildNumber " + getBuildNumber);
+	console.log("getBuildNumber " + buildNumber);
 	if (buildNumber) {
 		return buildNumber;
 	} else {
@@ -39,6 +39,7 @@ var getBuildNumber = function() {
 }
 
 var getNextLogName = function() {
+	console.log("getNextLogName");
 	var d = new Date(); // local time. not utc
 	return cfg.log_file_name_prefix + "_" + d.getFullYear() + zeroPad(d.getMonth +1, 2) + zeroPad(d.getDate, 2) + 
 			"_" + zeroPad(d.getHours(), 2) + zeroPad(d.getMinutes(), 2) + zeroPad(d.getSeconds(), 2) + (getBuildNumber() + 1);
