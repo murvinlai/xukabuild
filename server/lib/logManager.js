@@ -122,7 +122,7 @@ module.exports.saveLog = function(param, next) {
 			advanceBuildNumber();
 		}
 		console.log("File full path: " + fileFullPath);
-		fs.writeFile(fileFullPath, data.content, 'utf8', function(err) {
+		fs.writeFile(fileFullPath, param.content, 'utf8', function(err) {
 			if (err) {
 				next(err);
 			} else {
