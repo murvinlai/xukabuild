@@ -46,6 +46,7 @@ _XUKA_.input = {
 				data: {_csrf:_XUKA_.csrftoken, fileName:selectedValue},
 				success: function(data) {
 					console.log(data);
+					$('#logContentTextArea').val(data);
 				},
 				dataType: 'text'
 			});
