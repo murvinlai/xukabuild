@@ -10,7 +10,8 @@ var express = require('express'),
 	async = require('async'),
 	parse = require('url').parse,
 	adminSecurity = require('../lib/adminSecurity'),
-	actionManager = require('../lib/actionManager');
+	actionManager = require('../lib/actionManager'),
+	logManager = require('../lib/logManager');
 	
 app.engine('ejs', ejsEngine);	
 app.set('view engine', 'ejs');
@@ -75,6 +76,27 @@ app.post('/build', adminSecurity.restrict, function (req, res) {
 	});
 });
 
+app.post('/log', adminSecurity.restrict, function(req, res){
+	var passback = { status:false};
+	async.waterfall([
+		function(callback) {
+			console.log("STEP 1");
+			logManager.getLogContent({name:req.body.fileName}, callback);
+		},
+		function(data, callback) {
+			console.log("STEP 2 data: " + JSON.stringify(data));
+			passback.logContent = data.data;
+			passback.status = true;
+			res.json(passback);
+		}
+		
+	], function(err, result){
+		console.log("STEP ERROR");
+		passback.err = err;
+		res.json(passback);
+	});
+});
+
 app.get('/', adminSecurity.restrict, function (req, res) {
 	res.render('dashboard', { error:'', csrftoken:res.locals.csrftoken, cfg:cfg, data:{} });
 });
@@ -95,7 +117,24 @@ app.get('/*', adminSecurity.restrict, function (req, res) {
 		passback.data.script_content = fs.readFileSync(cfg.build_file_root_path + cfg.build_file_name);
 	}
 	
-	res.render(page, passback);
+	if (page == 'view_log') {
+		logManager.getAllLog(function(err, data){
+			if (err) {
+				if (err.id == 1) {
+					passback.data.allLogs = [];
+					res.render(page, passback);
+				} else {
+					res.render('error', err);
+				}
+			} else {
+				passback.data.allLogs = data.logs;
+				res.render(page, passback);
+			}
+		});
+		
+	} else {
+		res.render(page, passback);
+	}
 });
 
 // standard output

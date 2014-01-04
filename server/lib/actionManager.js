@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var exec = require('child_process').exec;
+var logManager = require('./logManager');
 
 module.exports.scriptExec = function(data, next) {
 	console.log("Script Exec");
@@ -21,7 +22,14 @@ module.exports.scriptExec = function(data, next) {
             stderr:stderr,
             error:err
         }
-        next(null, result);
+        
+        logManager.saveLog({content:stdout}, function(err, data){
+        	if (err) {
+        		next(err);
+        	} else {
+        		next(null, result);
+        	}
+        } );
 	});
 }
 

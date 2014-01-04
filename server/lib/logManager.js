@@ -1,7 +1,10 @@
 var fs = require('fs');
 var _ = require('underscore');
 
-var buildNumber = null;;
+if(!buildNumber){
+	global.buildNumber = null;;
+}
+
 // LOG convention:
 // <cfg.log_file_root_path>/<cfg.log_file_name_prefix>_YYYYMMDD_HHNNSS_<build_number>
 
@@ -53,7 +56,7 @@ module.exports.getLatestLog = function(next) {
 		} else {
 			var validLogFiles = _.filter(files, function(fileName){ return fileName.indexOf(cfg.log_file_name_prefix) >= 0; });
 			if (validLogFiles.length == 0) {
-				next({status:false, err:"No log file"});
+				next({id:1, message:"No log file"});
 			} else {
 				validLogFiles.sort();
 				var latest = validLogFiles[validLogFiles.length-1];
@@ -71,7 +74,7 @@ module.exports.getAllLog = function(next) {
 		} else {
 			var validLogFiles = _.filter(files, function(fileName){ return fileName.indexOf(cfg.log_file_name_prefix) >= 0; });
 			if (validLogFiles.length == 0) {
-				next({status:false, err:"No log file"});
+				next({id:1, message:"No log file"});
 			} else {
 				validLogFiles.sort();
 				next(null, {status:true, logs:validLogFiles});
