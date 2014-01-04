@@ -35,7 +35,7 @@ var getBuildNumber = function() {
 		validLogFiles.sort();
 		var latest = validLogFiles[validLogFiles.length-1];
 		var latestArray = latest.split("_");
-		buildNumber = latestArray[latestArray.length-1];
+		buildNumber = (latestArray[latestArray.length-1]) * 1;
 		console.log("Return F buildNumber" + buildNumber);
 		return buildNumber;
 	}

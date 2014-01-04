@@ -40,11 +40,10 @@ _XUKA_.input = {
 			if (selectedValue == "SELECT ONE" || selectedValue == "") {
 				return;
 			}
-			var log_id = 0;
 			$.ajax({
 				type: "POST", 
 				url: _XUKA_.url.build + "/log",
-				data: {_csrf:_XUKA_.csrftoken, log_id:log_id},
+				data: {_csrf:_XUKA_.csrftoken, fileName:selectedValue},
 				success: function(data) {
 					console.log(data);
 				},
