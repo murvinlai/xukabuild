@@ -44,8 +44,8 @@ var getBuildNumber = function() {
 var getNextLogName = function() {
 	console.log("getNextLogName");
 	var d = new Date(); // local time. not utc
-	var name =  cfg.log_file_name_prefix + "_" + d.getFullYear() + zeroPad(d.getMonth +1, 2) + zeroPad(d.getDate, 2) + 
-			"_" + zeroPad(d.getHours(), 2) + zeroPad(d.getMinutes(), 2) + zeroPad(d.getSeconds(), 2) + (getBuildNumber() + 1);
+	var name =  cfg.log_file_name_prefix + "_" + d.getFullYear() + zeroPad(d.getMonth() +1, 2) + zeroPad(d.getDate(), 2) + 
+			"_" + zeroPad(d.getHours(), 2) + zeroPad(d.getMinutes(), 2) + zeroPad(d.getSeconds(), 2) + "_" + (getBuildNumber() + 1);
 	console.log(" name: " + name);
 	return name;
 }
