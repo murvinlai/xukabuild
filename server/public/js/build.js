@@ -35,7 +35,7 @@ _XUKA_.input = {
 		action_type: 'click',
 		call: function(){
 			console.log("Select Log now");
-			var selectedValue = $('#selectLog option:selected').val();
+			var selectedValue = $('#select_log option:selected').val();
 			console.log("Select Value: " + selectedValue);
 			var log_id = 0;
 			$.ajax({
