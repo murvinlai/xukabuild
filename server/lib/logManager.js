@@ -97,7 +97,7 @@ module.exports.getLogContent = function(param, next) {
 		next({status:false, err: "File name is empty"});
 	} else {
 		var fileFullPath = cfg.log_file_root_path + param.name;
-		fs.readFile(fileFullPath, function(err, data) {
+		fs.readFile(fileFullPath, 'utf8', function(err, data) {
 			if (err) {
 				next(err);
 			} else {
@@ -122,7 +122,7 @@ module.exports.saveLog = function(param, next) {
 			advanceBuildNumber();
 		}
 		console.log("File full path: " + fileFullPath);
-		fs.writeFile(fileFullPath, data.content, function(err) {
+		fs.writeFile(fileFullPath, data.content, 'utf8', function(err) {
 			if (err) {
 				next(err);
 			} else {
