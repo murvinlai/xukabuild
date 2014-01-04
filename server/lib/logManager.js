@@ -90,30 +90,32 @@ module.exports.getAllLog = function(next) {
 	});
 }
 
-module.exports.getLogContent = function(data, next) {
+module.exports.getLogContent = function(param, next) {
 	// data.name is the log name
-	if (!data.name) {
+	console.log("File Name: " + param.name);
+	if (!param.name) {
 		next({status:false, err: "File name is empty"});
 	} else {
-		var fileFullPath = cfg.log_file_root_path + data.name;
+		var fileFullPath = cfg.log_file_root_path + param.name;
 		fs.readFile(fileFullPath, function(err, data) {
 			if (err) {
 				next(err);
 			} else {
+				console.log("getLogContent " + JSON.stringify(data));
 				next(null, {status:true, data:data});
 			}
 		});
 	}
 }
 
-module.exports.saveLog = function(data, next) {
+module.exports.saveLog = function(param, next) {
 	// data.name is the log name
 	// data.content is the log content
-	if (!data.content) {
+	if (!param.content) {
 		next({status:false, err: "File content is empty"});
 	} else {
-		if (data.name) {
-			var fileFullPath = cfg.log_file_root_path + data.name;
+		if (param.name) {
+			var fileFullPath = cfg.log_file_root_path + param.name;
 		} else {
 			// if no name specify, then use the getNextLogName
 			var fileFullPath = cfg.log_file_root_path + getNextLogName();
