@@ -4,7 +4,7 @@ var _ = require('underscore');
 if(_.isUndefined(global.buildNumber)){
 	global.buildNumber = null;;
 }
-
+console.log("Build number ls " + global.buildNumber + " and build number: " + buildNumber);
 // LOG convention:
 // <cfg.log_file_root_path>/<cfg.log_file_name_prefix>_YYYYMMDD_HHNNSS_<build_number>
 
@@ -22,18 +22,21 @@ var zeroPad = function(num, numZeros) {
 var getBuildNumber = function() {
 	console.log("getBuildNumber " + buildNumber);
 	if (buildNumber) {
+		console.log("Return buildNumber" + buildNumber);
 		return buildNumber;
 	} else {
 		var files = fs.readdirSync(cfg.log_file_root_path);
 		var validLogFiles = _.filter(files, function(fileName){ return fileName.indexOf(cfg.log_file_name_prefix) >= 0; });
 		if (validLogFiles.length == 0) {
 			buildNumber = 0;
+			console.log("Return 0");
 			return buildNumber;
 		}
 		validLogFiles.sort();
 		var latest = validLogFiles[validLogFiles.length-1];
 		var latestArray = latest.split("_");
 		buildNumber = latestArray[latestArray.length-1];
+		console.log("Return F buildNumber" + buildNumber);
 		return buildNumber;
 	}
 }
@@ -41,8 +44,10 @@ var getBuildNumber = function() {
 var getNextLogName = function() {
 	console.log("getNextLogName");
 	var d = new Date(); // local time. not utc
-	return cfg.log_file_name_prefix + "_" + d.getFullYear() + zeroPad(d.getMonth +1, 2) + zeroPad(d.getDate, 2) + 
+	var name =  cfg.log_file_name_prefix + "_" + d.getFullYear() + zeroPad(d.getMonth +1, 2) + zeroPad(d.getDate, 2) + 
 			"_" + zeroPad(d.getHours(), 2) + zeroPad(d.getMinutes(), 2) + zeroPad(d.getSeconds(), 2) + (getBuildNumber() + 1);
+	console.log(" name: " + name);
+	return name;
 }
 
 var advanceBuildNumber = function () {
