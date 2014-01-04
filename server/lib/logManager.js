@@ -119,8 +119,7 @@ module.exports.saveLog = function(data, next) {
 			var fileFullPath = cfg.log_file_root_path + getNextLogName();
 			advanceBuildNumber();
 		}
-		
-		var fileFullPath = cfg.log_file_root_path + data.name;
+		console.log("File full path: " + fileFullPath);
 		fs.writeFile(fileFullPath, data.content, function(err) {
 			if (err) {
 				next(err);
