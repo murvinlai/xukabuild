@@ -1,7 +1,7 @@
 var fs = require('fs');
 var _ = require('underscore');
 
-if(!buildNumber){
+if(_.isUndefined(buildNumber)){
 	global.buildNumber = null;;
 }
 
@@ -20,6 +20,7 @@ var zeroPad = function(num, numZeros) {
 }
 
 var getBuildNumber = function() {
+	console.log("getBuildNumber " + getBuildNumber);
 	if (buildNumber) {
 		return buildNumber;
 	} else {
