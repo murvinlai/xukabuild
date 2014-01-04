@@ -48,7 +48,7 @@ _XUKA_.input = {
 					console.log(data);
 					$('#logContentTextArea').val(data.logContent);
 				},
-				dataType: 'text'
+				dataType: 'json'
 			});
 		}
 	}
