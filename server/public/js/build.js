@@ -20,12 +20,14 @@ _XUKA_.input = {
 		action_type: 'click',
 		call: function(){
 			console.log("Build now");
+			$('#build_process_message').html("Running Now . . . ");
 			$.ajax({
 				type: "POST", 
 				url: _XUKA_.url.build + "/build",
 				data: {_csrf:_XUKA_.csrftoken},
 				success: function(data) {
 					console.log(data);
+					$('#build_process_message').html(data.message);
 				},
 				dataType: 'json'
 			});
