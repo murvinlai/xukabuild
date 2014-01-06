@@ -27,7 +27,7 @@ _XUKA_.input = {
 				data: {_csrf:_XUKA_.csrftoken},
 				success: function(data) {
 					console.log(data);
-					$('#build_process_message').html(data.message);
+					$('#build_process_message').html(data.build_process.message);
 				},
 				dataType: 'json'
 			});
