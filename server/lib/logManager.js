@@ -40,6 +40,7 @@ var getBuildNumber = function() {
 		return buildNumber;
 	}
 }
+module.exports.getBuildNumber = getBuildNumber;
 
 var getNextLogName = function() {
 	console.log("getNextLogName");
