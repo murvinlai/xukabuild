@@ -57,7 +57,8 @@ app.post('/build', adminSecurity.restrict, function (req, res) {
 		function(callback) {
 			console.log("STEP 1");
 			updateBuildProcess(1);
-			actionManager.scriptExec(null, callback);
+			var bn = logManager.getBuildNumber();
+			actionManager.scriptExec({buildNumber:bn}, callback);
 		},
 		function(data, callback) {
 			console.log("STEP 2 data: " + JSON.stringify(data));
