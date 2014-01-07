@@ -93,7 +93,9 @@ server.use(express.session({
 }));
 
 server.use(express.csrf());
+
 server.use(function (req, res, next) {
+	res.cookie('XSRF-TOKEN', req.csrfToken());
 	res.locals.csrftoken = req.csrfToken();
     next();
 });
