@@ -76,11 +76,12 @@ var bodyDefault = function() {
 
 /* Server Set up & config*/
 server.use(express.favicon());
-server.use(express.methodOverride());
 server.use(express.cookieParser());
-server.use(express.json());		
-server.use(express.urlencoded());
-server.use(express.multipart());	// require for crsf
+server.use(express.bodyParser());
+server.use(express.methodOverride());
+//server.use(express.json());		
+//server.use(express.urlencoded());
+//server.use(express.multipart());	// require for crsf
 server.use(helmet.xframe());
 server.use(helmet.iexss());
 server.use(helmet.contentTypeOptions());
@@ -95,10 +96,13 @@ server.use(express.session({
 server.use(express.csrf());
 
 server.use(function (req, res, next) {
-	res.cookie('X-CSRF-TOKEN', req.csrfToken());
+	res.cookie('XSRF-TOKEN', req.csrfToken());
 	res.locals.csrftoken = req.csrfToken();
     next();
 });
+
+
+
 server.use(server.router);  
 
 server.use(bodyDefault());
