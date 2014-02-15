@@ -1,11 +1,12 @@
 /*
  * this system admin will load the config into build_config
  */
+var util = require('../lib/util');
 if (!cfg) {
 	global.cfg = require("./config.js");
 }
 
-
+global.appSystem.setCsrf = util.bool(global.argv.csrf);
 
 module.exports.init = function () {
 	global.build_config = require(cfg.build_config_path + cfg.build_config_name).config;

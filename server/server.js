@@ -11,6 +11,7 @@ global.argv = require('optimist')
 			.default('port', false)
 			.default('apps', false)
 			.default('env', false)
+			.default('csrf', true)
 			.argv;
 
 // modules. 
@@ -47,6 +48,16 @@ var	systemInit = require('./lib/systemInit'),
 	buildApp = require('./apps/buildApp').app
 	;
 systemInit.init();	// run system admin to read config file and put that into build_config  or cfg
+			
+var conditionalCSRF = function(req, res, next) {
+    if (appSystem.setCsrf) {
+        csrf(req, res, next);
+    } else {
+        // by pass csrf
+        next();
+    }
+}
+			
 			
 /* handle uncaught exception */
 process.on('uncaughtException', function (ex) {
@@ -93,11 +104,16 @@ server.use(express.session({
 
 }));
 
-server.use(express.csrf());
+//server.use(express.csrf());
+server.use(conditionalCSRF);
 
 server.use(function (req, res, next) {
-	res.cookie('XSRF-TOKEN', req.csrfToken());
-	res.locals.csrftoken = req.csrfToken();
+    if (appSystem.setCsrf) {
+    	res.cookie('XSRF-TOKEN', req.csrfToken());
+    	res.locals.csrftoken = req.csrfToken();
+	} else {
+	    res.locals.csrftoken = "";
+	}
     next();
 });
 
