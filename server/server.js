@@ -51,7 +51,7 @@ systemInit.init();	// run system admin to read config file and put that into bui
 			
 var conditionalCSRF = function(req, res, next) {
     if (appSystem.setCsrf) {
-        csrf(req, res, next);
+        express.csrf(req, res, next);
     } else {
         // by pass csrf
         next();
