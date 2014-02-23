@@ -104,8 +104,10 @@ server.use(express.session({
 
 }));
 
-//server.use(express.csrf());
-server.use(conditionalCSRF);
+if (appSystem.setCsrf) {
+    console.log("set CSRF");
+    server.use(express.csrf());
+} 
 
 server.use(function (req, res, next) {
     if (appSystem.setCsrf) {
