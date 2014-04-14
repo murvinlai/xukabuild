@@ -43,7 +43,13 @@ app.get('/login', function(req, res){
 	} else {
 		console.log("not login");
 		
-		res.render('login', {layout:false, error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
+		
+		req.session.destroy(function() {
+            req.session = null;
+            res.clearCookie('connect.sid', { domain: cfg.target_app_domain, path: '/' });
+            //res.clearCookie('connect.sid', { domain: cfg.domainPrefix + cfg.domainName, path: '/' });
+            res.render('login', {layout:false, error:'', csrftoken:res.locals.csrftoken, cfg:cfg});
+        });
 	}
 });
 

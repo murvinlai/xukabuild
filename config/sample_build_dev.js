@@ -9,6 +9,7 @@ module.exports.config = {
 		username:"xxx",
 		password:"xxx"
 	},
+	target_app_domain   : "xukabuild.ca",
 	session_secret: "xxxx",
 	log_file_root_path : "/var/log/",
 	log_file_name_prefix: "xukalog_"
