@@ -36,6 +36,14 @@ module.exports.logout = function(req, res){
 	});
 };
 
+module.exports.directlogout = function(req, res){
+    // destroy the user's session to log them out
+    // will be re-created next request
+    req.session.destroy(function(){
+        res.render('directlogout_close');
+    });
+};
+
 module.exports.login = function (req, res) {
 
 	authenticate({
@@ -66,6 +74,34 @@ module.exports.login = function (req, res) {
 	
 }
 
+module.exports.directlogin = function (req, res) {
+
+    authenticate({
+                    name:req.query.username || req.body.username, 
+                    password:req.query.password || req.body.password      
+            }, 
+            function(err, data){
+                console.log("Hmmm  " + JSON.stringify(data));
+                console.log("Hmmm  ERR " + JSON.stringify(err));
+                if (data && data.status && data.user) {
+                    // Regenerate session when signing in
+                    // to prevent fixation 
+                    req.session.regenerate(function(){
+                        // Store the user's primary key 
+                        // in the session store to be retrieved,
+                        // or in this case the entire user object
+                        req.session.adminUser = data.user;
+                        console.log("post login");
+                        res.render('directlogin_close');
+                    });
+                } else {
+                    req.session.error = 'Authentication failed, please check your '
+                        + ' username and password.';
+                    console.log("post BACK");
+                    res.render('login', {layout:false, error:"Login Name and Password do not match. "});
+                }
+    });
+}
 
 
 

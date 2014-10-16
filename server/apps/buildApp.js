@@ -59,6 +59,16 @@ app.get('/logout', adminSecurity.logout);
 
 app.post('/logout', adminSecurity.logout);
 
+
+app.get('/directlogin', adminSecurity.directlogin);
+app.post('/directlogin', adminSecurity.directlogin);
+
+app.get('/directlogin_close', adminSecurity.restrict, function(req, res){
+    res.render('directlogin_close');
+});
+
+app.get('/directlogout', adminSecurity.directlogout);
+
 app.post('/build', adminSecurity.restrict, function (req, res) {
 	var passback = { status:false};
 	async.waterfall([
